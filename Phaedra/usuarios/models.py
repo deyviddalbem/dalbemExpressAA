@@ -9,3 +9,7 @@ class Usuarios(models.Model):
     
     def __str__(self):
         return self.nome_usuario + self.sobrenome_usuario + self.username
+    
+    class Meta:
+        verbose_name = "Usuarios"
+        verbose_name_plural = "Usuarios"
