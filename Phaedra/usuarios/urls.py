@@ -7,8 +7,9 @@ from django.urls.resolvers import URLPattern
 from django.views.generic.base import TemplateView
 from . import views
 
-app_name = 'usuarios'
+
 
 urlpatterns = [
    path('lista_usuarios_all/', views.lista_usuarios_all, name="lista_usuarios_all"), 
+   path('meus_dados/',views.mostrarMeusDados, name="meusDadosUsuario"),
 ]

@@ -17,3 +17,4 @@ from .models import *
 
 def index(request):
     return render(request,'template_base/template_base.html')
+

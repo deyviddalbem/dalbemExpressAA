@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from .models import *
 from .serializer import UsuariosSerializer
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class UsuariosListViewSet(viewsets.ModelViewSet):
@@ -16,3 +17,10 @@ class UsuariosListIdViewSet(viewsets.ModelViewSet):
 
 def lista_usuarios_all(request):
     return render(request, 'usuarios/lista_usuarios.html')
+
+##### Função para mostrar os dados do usuário que está autenticado no momento
+@login_required()
+def mostrarMeusDados(request):
+    dadosUsuario = User.objects.filter(id=request.user.id)
+    context = {'dadosUsuario': dadosUsuario}
+    return render(request, 'usuarios/meus_dados_usuario.html', context)
