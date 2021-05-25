@@ -1,15 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class Usuarios(models.Model):
-    nome_usuario = models.CharField('NOME USUARIO', max_length=30)
-    sobrenome_usuario = models.CharField('SOBRENOME USUARIO', max_length=30)
-    username = models.CharField('USERNAME', max_length=30)
-    senha_usuario = models.CharField(max_length=30)
-    
-    def __str__(self):
-        return self.nome_usuario + self.sobrenome_usuario + self.username
+class FotoUsuarios(models.Model):
+    foto_usuarios = models.FileField(upload_to='media/%Y/%m/%d/')
+    id_usuario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='NOME DO USUARIO')
     
     class Meta:
-        verbose_name = "Usuarios"
-        verbose_name_plural = "Usuarios"
+        verbose_name = "fotos_Usuario"
+        verbose_name_plural = "fotos_Usuario"

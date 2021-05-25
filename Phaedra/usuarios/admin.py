@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import Usuarios
+from .models import FotoUsuarios
 
 # Register your models here.
-class usuariosAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome_usuario', 'sobrenome_usuario', 'username')
-    list_display_links = ('id', 'nome_usuario', 'username')
-    search_fields = ('nome', 'username',)
+class FotosusuariosAdmin(admin.ModelAdmin):
+    list_display = ('id', 'foto_usuarios')
+    list_display_links = ('id',)
     
-admin.site.register(Usuarios,usuariosAdmin)
+admin.site.register(FotoUsuarios,FotosusuariosAdmin)

@@ -10,12 +10,14 @@
 <form>
     <div class="container border">
         <div class="text-center d-block">
-            <img class="mt-1 text-center rounded-circle" src="#"
-                style="width: 150px;">
-              <div class="mt-3">
-                <input type="file" name="arquivos" class="btn bg-gradient-primary text-white text-center" accept="image/png, image/jpeg"
-                multiple />
-            </div> 
+            {% for foto_usuario in mostrar_foto_usuario %}
+            <img class="mt-1 text-center " src="/media/{{foto_usuario.foto_usuarios}}" style="width: 250px;">
+            {% endfor %}
+            
+            <div class="mt-3">
+                <input type="file" name="arquivos" class="btn bg-gradient-primary text-white text-center"
+                    accept="image/png, image/jpeg" multiple />
+            </div>
         </div>
         {% for user in dadosUsuario %}
         <div class="mt-3 ">
@@ -40,7 +42,15 @@
             <input style="text-transform: uppercase;" type="text" class="form-control" disabled id="email"
                 value="{{user.username}}">
         </div>
-        
+        <a class="btn mb-3 w-30 bg-primary text-white" href="{% url 'atualizar_Cadastro_usuario' user.id %}"
+            title="Atualizar meus dados">
+            <i class="fas fa-user-edit"></i>
+            Atualizar Dados
+        </a>
+        <a class="btn mb-3 w-30 bg-primary text-white" href="{% url 'password_change' %}" title="Alterar Senha">
+            <i class="far fa-sync-alt"></i>
+            Alterar Senha
+        </a>
     </div>
 </form>
 {% endfor %}

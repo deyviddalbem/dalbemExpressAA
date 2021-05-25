@@ -1,0 +1,25 @@
+<title>ATUALIZAR CADASTRO | Ciclo Moreti</title>
+    {% extends 'template_base/template_base.html' %}
+
+    {% block titulo %}
+    <div class="text-center mt-3 h4">
+        ATUALIZAR MEUS DADOS
+    </div>
+    {% endblock titulo %}
+    {% block centro %}
+    <div class="container w-50">
+        <form method="POST">
+            <div class="col">
+                <div class="form-group align-right">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </div>
+                {% if form.errors %}
+                teste
+                {% endif%}
+                <input class="btn bg-primary text-white" type="submit" title="atualizar Dados"
+                    value="Atualizar">
+            </div>
+        </form>
+    </div>
+    {% endblock centro %}
