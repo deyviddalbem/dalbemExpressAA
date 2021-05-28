@@ -12,5 +12,6 @@ from . import views
 urlpatterns = [
    path('lista_usuarios_all/', views.lista_usuarios_all, name="lista_usuarios_all"), 
    path('meus_dados/',views.mostrar_MeusDados, name="meusDadosUsuario"),
+   path('cadastrar_foto/',views.cadastrar_foto_usuario, name="inserir_foto"),
    path('atualizar_Meus_Dados/<int:pk>', views.Atualizar_Cadastro_usuario.as_view(), name='atualizar_Cadastro_usuario'),
 ]

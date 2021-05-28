@@ -1,5 +1,5 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from rest_framework import viewsets
 from .models import *
 from django.urls import reverse_lazy
@@ -35,3 +35,22 @@ class Atualizar_Cadastro_usuario(UpdateView):
     template_name = "usuarios/atualizar_meus_dados_usuario.html"
     success_url = reverse_lazy('meusDadosUsuario')
     
+def cadastrar_foto_usuario(request,idFotoUsuario=None):
+    
+    usuario = User.objects.filter(id=request.user.id)
+    if idFotoUsuario:
+        fotoUsuario = get_object_or_404(FotoUsuarios, id=idFotoUsuario)
+    else:
+        fotoUsuario = None
+    
+    if request.method == 'POST':
+        form_edit = CadastroFotoUsuarioForm(request.Post, instance=fotoUsuario)
+        if form_edit.is_valid():
+            form_edit.save()
+            return redirect('meusDadosUsuario')
+        else:
+            form_edit = fotoUsuario
+            context = {'formEdit':form_edit, 'usuario':usuario}
+        return render(request, 'usuarios/cadastrar_foto_usuario.html', context)
+    else:
+        return HttpResponse('aqui')

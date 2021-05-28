@@ -1,0 +1,20 @@
+*{
+margin: 0;
+padding: 0;
+}
+.box_meus_dados{
+    width: 50%;
+
+}
+
+
+@media(max-width:425px){
+    .box_meus_dados{
+        width: 100%;
+    }
+}
+@media(min-width:768x){
+    .box_meus_dados{
+        width: 100%;
+    }
+}
