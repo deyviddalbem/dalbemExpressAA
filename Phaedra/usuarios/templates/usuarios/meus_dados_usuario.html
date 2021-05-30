@@ -9,11 +9,6 @@
 
 <form>
     <div class="box_meus_dados container">
-        <div class="text-center d-block">
-            {% for foto_usuario in mostrar_foto_usuario %}
-            <img class="mt-1 text-center" style="border-radius: 30px; width: 250px;" src="/media/{{foto_usuario.foto_usuarios}}" style="">
-            {% endfor %}
-        </div>
         {% for user in dadosUsuario %}
         <div class="mt-3 ">
             <label for="Nome">Nome: </label>
@@ -45,10 +40,6 @@
         <a class="btn mb-3 w-30 bg-primary text-white" href="{% url 'password_change' %}" title="Alterar Senha">
             <i class="far fa-sync-alt"></i>
             Alterar Senha
-        </a>
-        <a class="btn mb-3 w-30 bg-primary text-white" href="{% url 'inserir_foto' %}" title="Alterar Senha">
-            <i class="far fa-sync-alt"></i>
-            cadastrar foto
         </a>
     </div>
 </form>

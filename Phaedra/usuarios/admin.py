@@ -1,9 +1,5 @@
 from django.contrib import admin
-from .models import FotoUsuarios
+from .models import *
 
-# Register your models here.
-class FotosusuariosAdmin(admin.ModelAdmin):
-    list_display = ('id', 'foto_usuarios')
-    list_display_links = ('id',)
-    
-admin.site.register(FotoUsuarios,FotosusuariosAdmin)
+
+# admin.site.register()

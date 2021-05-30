@@ -18,3 +18,5 @@ from .models import *
 def index(request):
     return render(request,'template_base/template_base.html')
 
+def menu_principal(request):
+    return render(request,'template_base/menu_principal.html')

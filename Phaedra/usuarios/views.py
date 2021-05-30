@@ -24,33 +24,14 @@ def lista_usuarios_all(request):
 ##### Função para mostrar os dados do usuário que está autenticado no momento
 @login_required()
 def mostrar_MeusDados(request):
-    mostrar_foto_usuario = FotoUsuarios.objects.filter(id=request.user.id)
     dadosUsuario = User.objects.filter(id=request.user.id)
-    context = {'dadosUsuario': dadosUsuario, 'mostrar_foto_usuario': mostrar_foto_usuario}
+    context = {'dadosUsuario': dadosUsuario,}
     return render(request, 'usuarios/meus_dados_usuario.html', context)
 
+## Função para atualizar os dados do usuário
 class Atualizar_Cadastro_usuario(UpdateView):
     model = User
     form_class = PessoaUserFormUpdate
     template_name = "usuarios/atualizar_meus_dados_usuario.html"
     success_url = reverse_lazy('meusDadosUsuario')
-    
-def cadastrar_foto_usuario(request,idFotoUsuario=None):
-    
-    usuario = User.objects.filter(id=request.user.id)
-    if idFotoUsuario:
-        fotoUsuario = get_object_or_404(FotoUsuarios, id=idFotoUsuario)
-    else:
-        fotoUsuario = None
-    
-    if request.method == 'POST':
-        form_edit = CadastroFotoUsuarioForm(request.Post, instance=fotoUsuario)
-        if form_edit.is_valid():
-            form_edit.save()
-            return redirect('meusDadosUsuario')
-        else:
-            form_edit = fotoUsuario
-            context = {'formEdit':form_edit, 'usuario':usuario}
-        return render(request, 'usuarios/cadastrar_foto_usuario.html', context)
-    else:
-        return HttpResponse('aqui')
+       

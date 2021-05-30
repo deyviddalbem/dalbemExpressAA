@@ -6,15 +6,34 @@ padding: 0;
     width: 50%;
 
 }
-
-
+.box_atualizar_dados{
+    width: 50%;  
+}
+.rodape{
+    position: absolute; 
+    bottom: 0;
+}
 @media(max-width:425px){
     .box_meus_dados{
         width: 100%;
+    }
+    .box_atualizar_dados{
+        width: 100%;  
+    }
+    .rodape{
+        position: relative; 
+        bottom: 0;
     }
 }
 @media(min-width:768x){
     .box_meus_dados{
         width: 100%;
+    }
+    .box_atualizar_dados{
+        width: 100%;  
+    }
+    .rodape{
+        position: absolute; 
+        bottom: 0;
     }
 }

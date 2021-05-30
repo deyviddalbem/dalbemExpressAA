@@ -19,7 +19,6 @@
 <main>
     <!-- cabecalho da pagina -->
     <header>
-
         <div>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
@@ -99,13 +98,19 @@
         {% block centro %}
   
     <div class="container border">
-        centro
+       
     </div>
     {% endblock centro %}
-    </body>
-    <footer>
-
-    </footer>
+    <footer class="rodape container footer w-100">
+        <div class="card-footer text-muted text-center">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-whatsapp"></i>
+            Copyright  DALBEM EXPRESS - PHAEDRA - 2021
+        </div>
+    </footer>  
+</body>
+  
 </main>
 <!-- scripts -->
 <script src="{% static 'Phaedra/phaedra.js' %}"></script>

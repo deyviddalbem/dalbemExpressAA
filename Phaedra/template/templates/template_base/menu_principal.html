@@ -1,0 +1,23 @@
+{% extends 'template_base/template_base.html' %}
+
+{% block titulo %}
+<div class="text-center mt-3 h4">
+    MENU PRINCIPAL
+</div>
+{% endblock titulo %}
+
+{% block centro %}
+<div class="container border">
+    {% if user.is_authenticated %}
+    autenticado
+    {% else%}
+    <div class="container">
+        <p class=" alert alert-danger text-black text-center">efetue a atenticação para visualizar o menu principal!
+        </p>
+    </div>
+
+
+</div>
+{% endif %}
+
+{% endblock centro %}
