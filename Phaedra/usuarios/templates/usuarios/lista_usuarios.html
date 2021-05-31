@@ -1,1 +1,88 @@
-lista usuarios
+<title>USUÁRIOS | Ciclo Moreti </title>
+{% extends 'template_base/template_base.html' %}
+{% block titulo %}
+<div class="text-center mt-3 h4">
+    LISTA DE USUÁRIOS DO SISTEMA
+</div>
+
+{% endblock titulo %}
+
+{% block centro %}
+{% if users_list %}
+
+<div class="container">
+    <div class="card-body table-responsive">
+        <table id="tabelaUsuarios" class="display table table-bordered table-hover" class="display" width="100%"
+            cellspacing="0">
+            <thead class="bg-primary text-center text-white">
+                <tr>
+                    <th title="Clique para Ordenar " class="text-center">#</th>
+                    <th title="Clique para Ordenar ">NOME DE USUÁRIO</th>
+                    <th title="Clique para Ordenar ">NOME</th>
+                    <!-- <th title="Clique para Ordenar ">SOBRENOME</th> -->
+                    <th title="Clique para Ordenar ">E-MAIL</th>
+                    <th title="Clique para Ordenar ">AÇÃO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuarios in users_list %}
+                <tr>
+                    <td class="text-center"> 00{{ usuarios.id }}</td>
+                    <td> {{ usuarios.username }}</td>
+                    <td>{{ usuarios.first_name }} {{ usuarios.last_name }}</td>
+                    <!-- <td></td> -->
+                    <td>{{ usuarios.email }}</td>
+                    <td>
+                        <a href="#" id="btnListaUsuarios" class="text-info"
+                            title="editar usuário">
+                            <i class="fas fa-edit"></i>
+                            Editar usuário
+                        </a>
+                        <a href="#" class="text-danger" id="btnListaUsuarios"
+                            title="excluir usuário">
+                            <i class="fas fa-trash"></i>
+                            excluir usuário
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="border text-center" colspan="6">
+                        <a href="#" class="btn btn-primary" id="btnListaUsuarios" title="criar usuário">
+                            <i class="fas fa-user-plus"></i>
+                            Novo usuário
+                        </a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <!-- <div class="pagination container">
+            <span class="step-links">
+                {% if users_list.has_previous %}
+                <a href="?page=1">&laquo; Primeira Página</a>
+                <a href="?page={{ users_list.previous_page_number }}">Página Anterior</a>
+                {% endif %}
+                <span class="current">
+                    PÁGINA {{ users_list.number }} de {{ users_list.paginator.num_pages }}.
+                </span>
+                {% if users_list.has_next %}
+                <a href="?page={{ users_list.next_page_number }}">Proxima página</a>
+                <a href="?page={{ users_list.paginator.num_pages }}">Ultima Página &raquo;</a>
+                {% endif %}
+            </span>
+        </div> -->
+    </div>
+    {% else %}
+    <div class="text-center">
+        <div class="alert alert-danger">
+            Não há usuários no sistema!
+        </div>
+        <a class="btn  ml-2 mb-3 mt-3 bg-gradient-primary" style="color: white;" href="#" title="Pagina Inicial">
+            Pagina Inicial
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock centro %}

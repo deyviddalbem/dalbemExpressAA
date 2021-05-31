@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .forms import *
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 class UsuariosListViewSet(viewsets.ModelViewSet):
@@ -35,3 +37,13 @@ class Atualizar_Cadastro_usuario(UpdateView):
     template_name = "usuarios/atualizar_meus_dados_usuario.html"
     success_url = reverse_lazy('meusDadosUsuario')
        
+
+##### Função para lstar os Usuarios #####
+@login_required()
+def listar_usuarios(request):
+    users_list = User.objects.all()
+    paginator = Paginator(users_list, 10)
+    page = request.GET.get('page')
+    users_list = paginator.get_page(page)
+    context = {'users_list': users_list}
+    return render(request, 'usuarios/lista_usuarios.html', context)

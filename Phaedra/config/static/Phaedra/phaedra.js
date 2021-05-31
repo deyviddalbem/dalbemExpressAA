@@ -1,8 +1,7 @@
 $(document).ready(function () {
     $('#tabelaUsuarios').DataTable({
-
     })
-
+    
 }).extend($.fn.dataTable.defaults, {
     searching: true,
     paging: true,
