@@ -3,10 +3,19 @@ $(document).ready(function () {
     })
     
 }).extend($.fn.dataTable.defaults, {
+    dom: 'B<"clear">lfrtip',
+    buttons: [
+        { extend: 'csv', text: 'salvar em csv' },
+        { extend: 'pdf', text: 'salvar em PDF' },
+        { extend: 'print', text: 'imprimir' }
+    ],
     searching: true,
     paging: true,
     autoWidth: true,
     responsive: true,
+    columnDefs:[{
+        className:'order-column',
+    }],
     language: {
         "search": "Buscar na tabela:",
         "emptyTable": "Não existe dados a serem exibidos",
